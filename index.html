@@ -1,2293 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-  <title>Happy Birthday, Rohini ❤️</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Nunito:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    :root {
-      --wine: #3B1225;
-      --wine-deep: #260A18;
-      --rose: #E7B8C4;
-      --rose-soft: #F4DEE4;
-      --gold: #E9C368;
-      --paper: #FBF2E9;
-      --ink: #3B1225;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      background:
-        radial-gradient(
-          130% 130% at 50% 0%,
-          #55203B 0%,
-          var(--wine-deep) 62%,
-          #14040A 100%
-        );
-
-      font-family: 'Nunito', sans-serif;
-      color: var(--paper);
-      overflow-x: hidden;
-
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-
-    /* =========================================================
-       BACKGROUND
-    ========================================================= */
-
-    .sky {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .twinkle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: var(--gold);
-      border-radius: 50%;
-      opacity: 0.5;
-      animation: blink ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%,
-      100% {
-        opacity: 0.15;
-      }
-
-      50% {
-        opacity: 0.85;
-      }
-    }
-
-    /* =========================================================
-       SCENE
-    ========================================================= */
-
-    .scene {
-      position: fixed;
-      inset: 0;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 7vh 6vw 12vh 6vw;
-
-      z-index: 1;
-
-      opacity: 0;
-      transition: opacity 0.5s ease;
-
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .scene.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .stage {
-      width: 100%;
-      max-width: 560px;
-      text-align: center;
-      margin: auto;
-    }
-
-    .eyebrow {
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-      margin-bottom: 0.9rem;
-    }
-
-    h1,
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      line-height: 1.15;
-      margin: 0 0 0.6rem 0;
-    }
-
-    .headline {
-      font-size: clamp(2rem, 8vw, 3.1rem);
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--gold),
-          #fff6dc,
-          var(--gold)
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-
-      text-shadow: 0 0 30px rgba(233, 195, 104, 0.25);
-    }
-
-    .sub {
-      font-size: 1rem;
-      color: var(--rose);
-      line-height: 1.6;
-      margin: 0 0 1.8rem 0;
-    }
-
-    /* =========================================================
-       BUTTON
-    ========================================================= */
-
-    .cta {
-      margin-top: 2.2rem;
-
-      border: 1px solid rgba(233, 195, 104, 0.55);
-
-      background: rgba(233, 195, 104, 0.08);
-
-      color: var(--gold);
-
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.92rem;
-
-      letter-spacing: 0.03em;
-
-      padding: 0.85rem 1.8rem;
-
-      border-radius: 999px;
-
-      cursor: pointer;
-
-      transition:
-        background 0.3s ease,
-        transform 0.2s ease;
-    }
-
-    .cta:hover {
-      background: rgba(233, 195, 104, 0.18);
-    }
-
-    .cta:active {
-      transform: scale(0.97);
-    }
-
-    /* =========================================================
-       PROGRESS
-    ========================================================= */
-
-    .progress {
-      position: fixed;
-
-      top: calc(
-        1.1rem + env(safe-area-inset-top, 0px)
-      );
-
-      left: 6vw;
-      right: 6vw;
-
-      display: flex;
-      gap: 6px;
-
-      z-index: 5;
-    }
-
-    .progress i {
-      flex: 1;
-
-      height: 3px;
-
-      border-radius: 2px;
-
-      background: rgba(233, 195, 104, 0.22);
-
-      overflow: hidden;
-    }
-
-    .progress i b {
-      display: block;
-
-      height: 100%;
-      width: 0%;
-
-      background: var(--gold);
-
-      transition: width 0.4s ease;
-    }
-
-    /* =========================================================
-       SCENE 1 - HEART TREE
-    ========================================================= */
-
-    #treeWrap {
-      position: relative;
-
-      width: min(78vw, 300px);
-      height: 340px;
-
-      margin: 0 auto 1rem auto;
-    }
-
-    .trunk {
-      position: absolute;
-
-      bottom: 0;
-      left: 50%;
-
-      width: 14px;
-      height: 0%;
-
-      background:
-        linear-gradient(
-          180deg,
-          #7a2c4c,
-          #4a1830
-        );
-
-      transform: translateX(-50%);
-
-      border-radius: 8px 8px 0 0;
-
-      animation: grow 1.8s ease-out forwards;
-    }
-
-    @keyframes grow {
-      to {
-        height: 46%;
-      }
-    }
-
-    .branch {
-      position: absolute;
-
-      bottom: 44%;
-
-      width: 3px;
-      height: 0;
-
-      background: #7a2c4c;
-
-      transform-origin: bottom center;
-
-      border-radius: 4px;
-
-      animation: growBranch 1.2s ease-out forwards;
-
-      animation-delay: 1.6s;
-    }
-
-    @keyframes growBranch {
-      to {
-        height: var(--blen);
-      }
-    }
-
-    .heart-leaf {
-      position: absolute;
-
-      font-size: 1.15rem;
-
-      opacity: 0;
-
-      transform: scale(0.3);
-
-      animation:
-        popIn 0.6s
-        cubic-bezier(0.2, 1.6, 0.4, 1)
-        forwards;
-    }
-
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .fallheart {
-      position: absolute;
-
-      top: -8%;
-
-      font-size: 1rem;
-
-      opacity: 0;
-
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 0.9;
-      }
-
-      100% {
-        transform: translateY(120%) rotate(180deg);
-        opacity: 0;
-      }
-    }
-
-    /* =========================================================
-       SCENE 2 - ROSE BURST
-    ========================================================= */
-
-    .burst-emoji {
-      position: fixed;
-
-      font-size: 1.6rem;
-
-      top: 50%;
-      left: 50%;
-
-      z-index: 3;
-
-      animation:
-        burst 1.4s
-        cubic-bezier(0.15, 0.8, 0.3, 1)
-        forwards;
-
-      pointer-events: none;
-    }
-
-    @keyframes burst {
-      0% {
-        transform:
-          translate(-50%, -50%)
-          scale(0.2);
-
-        opacity: 0;
-      }
-
-      15% {
-        opacity: 1;
-      }
-
-      100% {
-        transform:
-          translate(
-            calc(-50% + var(--dx)),
-            calc(-50% + var(--dy))
-          )
-          scale(1)
-          rotate(var(--rot));
-
-        opacity: 0;
-      }
-    }
-
-    /* =========================================================
-       SCENE 3
-    ========================================================= */
-
-    .announcement {
-      color: var(--rose-soft);
-
-      text-align: left;
-
-      background:
-        rgba(251, 242, 233, 0.05);
-
-      border:
-        1px solid rgba(233, 195, 104, 0.25);
-
-      border-radius: 4px;
-
-      padding: 1.1rem;
-
-      line-height: 1.6;
-    }
-
-    .announcement em {
-      color: var(--rose-soft);
-    }
-
-    /* =========================================================
-       SCENE 4 - GALLERY
-    ========================================================= */
-
-    .gallery {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 1.4rem;
-
-      margin-top: 1.4rem;
-    }
-
-    .photo-card {
-      background:
-        linear-gradient(
-          180deg,
-          rgba(251, 242, 233, 0.06),
-          rgba(251, 242, 233, 0.02)
-        );
-
-      border:
-        1px solid rgba(233, 195, 104, 0.25);
-
-      border-radius: 6px;
-
-      padding: 1rem;
-
-      box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.18);
-    }
-
-    .photo-frame {
-      width: 100%;
-
-      aspect-ratio: 4 / 3;
-
-      border-radius: 4px;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #7a2c4c,
-          var(--wine-deep) 78%
-        );
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      font-size: 2.4rem;
-
-      border:
-        1px solid rgba(233, 195, 104, 0.3);
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-
-      transition:
-        transform 0.5s ease;
-    }
-
-    .photo-card:hover .photo-frame img {
-      transform: scale(1.03);
-    }
-
-    .photo-caption {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-style: italic;
-
-      font-size: 1.05rem;
-
-      color: var(--rose-soft);
-
-      margin-top: 0.8rem;
-
-      line-height: 1.5;
-    }
-
-    .photo-note {
-      font-size: 0.72rem;
-
-      color:
-        rgba(244, 222, 228, 0.55);
-
-      margin-top: 0.35rem;
-    }
-
-    /* =========================================================
-       SCENE 5 - LETTER
-    ========================================================= */
-
-    .modal-card {
-      background:
-        linear-gradient(
-          180deg,
-          var(--paper),
-          #F6E8D8
-        );
-
-      color: var(--ink);
-
-      border-radius: 6px;
-
-      padding: 2.2rem 1.7rem;
-
-      text-align: left;
-
-      position: relative;
-
-      box-shadow:
-        0 30px 70px rgba(10, 2, 6, 0.5);
-    }
-
-    .modal-card::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      right: 0;
-
-      height: 5px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--gold),
-          var(--rose),
-          var(--gold)
-        );
-    }
-
-    .reason-label {
-      font-weight: 700;
-
-      font-size: 0.7rem;
-
-      letter-spacing: 0.12em;
-
-      color: #9c6b2f;
-
-      margin-bottom: 0.8rem;
-    }
-
-    .reason-text {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size:
-        clamp(1.05rem, 4vw, 1.3rem);
-
-      line-height: 1.6;
-
-      margin: 0 0 1.1rem 0;
-    }
-
-    .reason-text em {
-      font-style: italic;
-
-      color: #7a2340;
-    }
-
-    .signoff {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-style: italic;
-
-      font-size: 1rem;
-
-      color: #5a2337;
-
-      text-align: right;
-    }
-
-    /* =========================================================
-       SCENE 6 - LOVE
-    ========================================================= */
-
-    .love-tap {
-      width: 200px;
-      height: 200px;
-
-      margin: 1.6rem auto;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #7a2c4c,
-          var(--wine-deep) 78%
-        );
-
-      border:
-        1px solid rgba(233, 195, 104, 0.55);
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      font-size: 3.2rem;
-
-      cursor: pointer;
-
-      user-select: none;
-
-      position: relative;
-
-      animation:
-        pulseGlow 2.4s
-        ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%,
-      100% {
-        box-shadow:
-          0 0 0 rgba(233, 195, 104, 0.15);
-      }
-
-      50% {
-        box-shadow:
-          0 0 45px rgba(233, 195, 104, 0.35);
-      }
-    }
-
-    .sticker {
-      position: fixed;
-
-      z-index: 6;
-
-      font-size: 1.8rem;
-
-      pointer-events: none;
-
-      animation:
-        stickerPop 1.6s
-        ease-out forwards;
-    }
-
-    @keyframes stickerPop {
-      0% {
-        transform:
-          translate(-50%, -50%)
-          scale(0.3)
-          rotate(0deg);
-
-        opacity: 0;
-      }
-
-      18% {
-        opacity: 1;
-
-        transform:
-          translate(-50%, -50%)
-          scale(1.15)
-          rotate(var(--rot));
-      }
-
-      100% {
-        transform:
-          translate(
-            calc(-50% + var(--dx)),
-            calc(-50% + var(--dy) - 60px)
-          )
-          scale(0.9)
-          rotate(var(--rot));
-
-        opacity: 0;
-      }
-    }
-
-    .love-count {
-      font-size: 0.85rem;
-
-      color: var(--rose);
-
-      margin-top: 0.6rem;
-    }
-
-    .final-line {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-style: italic;
-
-      font-size: 1.15rem;
-
-      color: var(--rose-soft);
-
-      margin-top: 1.6rem;
-
-      line-height: 1.6;
-    }
-
-    /* =========================================================
-       REPLY BOX
-    ========================================================= */
-
-    .reply-box {
-      margin-top: 2.2rem;
-
-      background:
-        rgba(251, 242, 233, 0.06);
-
-      border:
-        1px solid rgba(233, 195, 104, 0.3);
-
-      border-radius: 4px;
-
-      padding: 1.3rem;
-
-      text-align: left;
-    }
-
-    .reply-label {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-style: italic;
-
-      font-size: 1.08rem;
-
-      color: var(--rose-soft);
-
-      line-height: 1.5;
-
-      margin: 0 0 0.9rem 0;
-    }
-
-    .reply-box textarea {
-      width: 100%;
-
-      min-height: 96px;
-
-      resize: vertical;
-
-      border-radius: 3px;
-
-      border:
-        1px solid rgba(233, 195, 104, 0.4);
-
-      background:
-        rgba(251, 242, 233, 0.08);
-
-      color: var(--paper);
-
-      font-family:
-        'Nunito',
-        sans-serif;
-
-      font-size: 0.92rem;
-
-      padding: 0.7rem;
-
-      line-height: 1.5;
-    }
-
-    .reply-box textarea::placeholder {
-      color:
-        rgba(244, 222, 228, 0.5);
-    }
-
-    .reply-box textarea:focus {
-      outline:
-        1px solid var(--gold);
-    }
-
-    .reply-send {
-      margin-top: 0.8rem;
-
-      width: 100%;
-
-      border:
-        1px solid rgba(233, 195, 104, 0.55);
-
-      background:
-        rgba(233, 195, 104, 0.12);
-
-      color: var(--gold);
-
-      font-family:
-        'Nunito',
-        sans-serif;
-
-      font-weight: 700;
-
-      font-size: 0.9rem;
-
-      padding: 0.8rem;
-
-      border-radius: 999px;
-
-      cursor: pointer;
-
-      transition:
-        background 0.3s ease;
-    }
-
-    .reply-send:hover {
-      background:
-        rgba(233, 195, 104, 0.22);
-    }
-
-    .reply-sent {
-      font-size: 0.78rem;
-
-      color: var(--gold);
-
-      margin-top: 0.6rem;
-
-      text-align: center;
-
-      opacity: 0;
-
-      transition:
-        opacity 0.3s ease;
-    }
-
-    .reply-sent.show {
-      opacity: 1;
-    }
-
-    /* =========================================================
-       MUSIC / WHATSAPP
-    ========================================================= */
-
-    .music-row {
-      margin-top: 1.6rem;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 0.7rem;
-
-      flex-wrap: wrap;
-    }
-
-    .music-btn {
-      border:
-        1px solid rgba(154, 107, 47, 0.4);
-
-      background: transparent;
-
-      color: #9c6b2f;
-
-      font-family:
-        'Nunito',
-        sans-serif;
-
-      font-size: 0.8rem;
-
-      padding:
-        0.55rem 1.05rem;
-
-      border-radius: 999px;
-
-      cursor: pointer;
-
-      text-decoration: none;
-
-      display: inline-block;
-    }
-
-    .wa-btn {
-      border-color:
-        rgba(233, 195, 104, 0.5);
-
-      color: var(--gold);
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer {
-      position: relative;
-
-      z-index: 1;
-
-      text-align: center;
-
-      font-size: 0.72rem;
-
-      color:
-        rgba(244, 222, 228, 0.4);
-
-      padding:
-        1rem 0 2rem 0;
-    }
-
-    /* =========================================================
-       MOBILE
-    ========================================================= */
-
-    @media (max-width: 480px) {
-
-      .scene {
-        padding:
-          6vh 5vw 10vh 5vw;
-      }
-
-      .modal-card {
-        padding:
-          2rem 1.3rem;
-      }
-
-      .love-tap {
-        width: 175px;
-        height: 175px;
-      }
-
-      .headline {
-        font-size:
-          clamp(2rem, 9vw, 2.8rem);
-      }
-
-      .photo-card {
-        padding: 0.8rem;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Rohini ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#3B1225;--wine-deep:#260A18;--rose:#E7B8C4;--rose-soft:#F4DEE4;--gold:#E9C368;--paper:#FBF2E9;--ink:#3B1225}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;min-height:100%;background:radial-gradient(130% 130% at 50% 0%,#55203B 0%,var(--wine-deep) 62%,#14040A 100%);font-family:'Nunito',sans-serif;color:var(--paper);overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.twinkle{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:.5;animation:blink ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.15}50%{opacity:.85}}
+.scene{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:7vh 6vw 12vh;z-index:1;opacity:0;transition:opacity .5s ease;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.scene.active{display:flex;opacity:1}
+.stage{width:100%;max-width:560px;text-align:center;margin:auto}
+.eyebrow{font-weight:700;font-size:.72rem;letter-spacing:.14em;color:var(--gold);margin-bottom:.9rem}
+h1,h2{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;margin:0 0 .6rem}
+.headline{font-size:clamp(2rem,8vw,3.1rem);background:linear-gradient(90deg,var(--gold),#fff6dc,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(233,195,104,.25)}
+.sub{font-size:1rem;color:var(--rose);line-height:1.6;margin:0 0 1.8rem}
+.cta{margin-top:2.2rem;border:1px solid rgba(233,195,104,.55);background:rgba(233,195,104,.08);color:var(--gold);font-family:'Nunito',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.03em;padding:.85rem 1.8rem;border-radius:999px;cursor:pointer;transition:background .3s ease,transform .2s ease}
+.cta:hover{background:rgba(233,195,104,.18)}.cta:active{transform:scale(.97)}
+.progress{position:fixed;top:calc(1.1rem + env(safe-area-inset-top,0px));left:6vw;right:6vw;display:flex;gap:6px;z-index:5}
+.progress i{flex:1;height:3px;border-radius:2px;background:rgba(233,195,104,.22);overflow:hidden}
+.progress i b{display:block;height:100%;width:0%;background:var(--gold);transition:width .4s ease}
+#treeWrap{position:relative;width:min(78vw,300px);height:340px;margin:0 auto 1rem}
+.trunk{position:absolute;bottom:0;left:50%;width:14px;height:0%;background:linear-gradient(180deg,#7a2c4c,#4a1830);transform:translateX(-50%);border-radius:8px 8px 0 0;animation:grow 1.8s ease-out forwards}
+@keyframes grow{to{height:46%}}
+.branch{position:absolute;bottom:44%;width:3px;height:0;background:#7a2c4c;transform-origin:bottom center;border-radius:4px;animation:growBranch 1.2s ease-out forwards;animation-delay:1.6s}
+@keyframes growBranch{to{height:var(--blen)}}
+.heart-leaf{position:absolute;font-size:1.15rem;opacity:0;transform:scale(.3);animation:popIn .6s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes popIn{to{opacity:1;transform:scale(1)}}
+.fallheart{position:absolute;top:-8%;font-size:1rem;opacity:0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.9}100%{transform:translateY(120%) rotate(180deg);opacity:0}}
+.burst-emoji{position:fixed;font-size:1.6rem;top:50%;left:50%;z-index:3;animation:burst 1.4s cubic-bezier(.15,.8,.3,1) forwards;pointer-events:none}
+@keyframes burst{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}15%{opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1) rotate(var(--rot));opacity:0}}
+.announcement{color:var(--rose-soft);text-align:left;background:rgba(251,242,233,.05);border:1px solid rgba(233,195,104,.25);border-radius:4px;padding:1.1rem;line-height:1.6}
+.gallery{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.4rem}
+.photo-card{background:linear-gradient(180deg,rgba(251,242,233,.06),rgba(251,242,233,.02));border:1px solid rgba(233,195,104,.25);border-radius:6px;padding:1rem;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.photo-frame{width:100%;aspect-ratio:4/3;border-radius:4px;overflow:hidden;background:radial-gradient(circle at 35% 30%,#7a2c4c,var(--wine-deep) 78%);display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:1px solid rgba(233,195,104,.3)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.photo-card:hover .photo-frame img{transform:scale(1.03)}
+.photo-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--rose-soft);margin-top:.8rem;line-height:1.5}
+.photo-note{font-size:.72rem;color:rgba(244,222,228,.55);margin-top:.35rem}
+.modal-card{background:linear-gradient(180deg,var(--paper),#F6E8D8);color:var(--ink);border-radius:6px;padding:2.2rem 1.7rem;text-align:left;position:relative;box-shadow:0 30px 70px rgba(10,2,6,.5)}
+.modal-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--rose),var(--gold))}
+.reason-label{font-weight:700;font-size:.7rem;letter-spacing:.12em;color:#9c6b2f;margin-bottom:.8rem}
+.reason-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,4vw,1.3rem);line-height:1.6;margin:0 0 1.1rem}
+.reason-text em{font-style:italic;color:#7a2340}
+.signoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:#5a2337;text-align:right}
+.love-tap{width:200px;height:200px;margin:1.6rem auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7a2c4c,var(--wine-deep) 78%);border:1px solid rgba(233,195,104,.55);display:flex;align-items:center;justify-content:center;font-size:3.2rem;cursor:pointer;user-select:none;position:relative;animation:pulseGlow 2.4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 rgba(233,195,104,.15)}50%{box-shadow:0 0 45px rgba(233,195,104,.35)}}
+.sticker{position:fixed;z-index:6;font-size:1.8rem;pointer-events:none;animation:stickerPop 1.6s ease-out forwards}
+@keyframes stickerPop{0%{transform:translate(-50%,-50%) scale(.3) rotate(0deg);opacity:0}18%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(var(--rot))}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy) - 60px)) scale(.9) rotate(var(--rot));opacity:0}}
+.love-count{font-size:.85rem;color:var(--rose);margin-top:.6rem}
+.final-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--rose-soft);margin-top:1.6rem;line-height:1.6}
+.reply-box{margin-top:2.2rem;background:rgba(251,242,233,.06);border:1px solid rgba(233,195,104,.3);border-radius:4px;padding:1.3rem;text-align:left}
+.reply-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;color:var(--rose-soft);line-height:1.5;margin:0 0 .9rem}
+.reply-box textarea{width:100%;min-height:96px;resize:vertical;border-radius:3px;border:1px solid rgba(233,195,104,.4);background:rgba(251,242,233,.08);color:var(--paper);font-family:'Nunito',sans-serif;font-size:.92rem;padding:.7rem;line-height:1.5}
+.reply-box textarea::placeholder{color:rgba(244,222,228,.5)}
+.reply-box textarea:focus{outline:1px solid var(--gold)}
+.reply-send{margin-top:.8rem;width:100%;border:1px solid rgba(233,195,104,.55);background:rgba(233,195,104,.12);color:var(--gold);font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;padding:.8rem;border-radius:999px;cursor:pointer}
+.reply-send:hover{background:rgba(233,195,104,.22)}
+.reply-sent{font-size:.78rem;color:var(--gold);margin-top:.6rem;text-align:center;opacity:0;transition:opacity .3s ease}
+.reply-sent.show{opacity:1}
+.music-row{margin-top:1.6rem;display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap}
+.music-btn{border:1px solid rgba(154,107,47,.4);background:transparent;color:#9c6b2f;font-family:'Nunito',sans-serif;font-size:.8rem;padding:.55rem 1.05rem;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block}
+.wa-btn{border-color:rgba(233,195,104,.5);color:var(--gold)}
+footer{position:relative;z-index:1;text-align:center;font-size:.72rem;color:rgba(244,222,228,.4);padding:1rem 0 2rem}
+@media(max-width:480px){.scene{padding:6vh 5vw 10vh}.modal-card{padding:2rem 1.3rem}.love-tap{width:175px;height:175px}.headline{font-size:clamp(2rem,9vw,2.8rem)}.photo-card{padding:.8rem}}
+</style>
 </head>
-
 <body>
 
-  <!-- =========================================================
-       BACKGROUND
-  ========================================================== -->
-
-  <div class="sky" id="sky"></div>
-
-  <!-- =========================================================
-       PROGRESS BAR
-  ========================================================== -->
-
-  <div class="progress" id="progress"></div>
-
-
-  <!-- =========================================================
-       SCENE 1
-       LOVE TREE
-  ========================================================== -->
-
-  <section class="scene" id="scene-1">
-
-    <div class="stage">
-
-      <div class="eyebrow">
-        FOR ROHINI
-      </div>
-
-      <h1 class="headline">
-        A tree grown
-        <br>
-        from a heart
-      </h1>
-
-      <p class="sub">
-        Har ek pyar ki shuru'aat ek beej se hoti hai —
-        yeh raha mera.
-      </p>
-
-      <div id="treeWrap"></div>
-
-      <button
-        class="cta"
-        onclick="goTo(2)"
-      >
-        Aage badho →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       SCENE 2
-       ROSES
-  ========================================================== -->
-
-  <section class="scene" id="scene-2">
-
-    <div class="stage">
-
-      <div class="eyebrow">
-        EK CHHOTA SA TOHFA
-      </div>
-
-      <h2
-        class="headline"
-        style="font-size:clamp(1.7rem,7vw,2.6rem);"
-      >
-        Roses & kisses,
-        <br>
-        just for you 🌹💋
-      </h2>
-
-      <p class="sub">
-        Tap the rose and let it rain roses.
-      </p>
-
-      <div
-        class="love-tap"
-        id="roseBtn"
-        style="
-          width:150px;
-          height:150px;
-          font-size:2.6rem;
-        "
-      >
-        🌹
-      </div>
-
-      <button
-        class="cta"
-        onclick="goTo(3)"
-      >
-        Aage badho →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       SCENE 3
-       FUNNY ANNOUNCEMENT
-  ========================================================== -->
-
-  <section class="scene" id="scene-3">
-
-    <div class="stage">
-
-      <div class="eyebrow">
-        BREAKING NEWS 📰
-      </div>
-
-      <h2
-        class="headline"
-        style="font-size:clamp(1.8rem,7vw,2.7rem);"
-      >
-        Aaj duniya mein
-        <br>
-        ek khaas cheez hui hai
-      </h2>
-
-      <p class="reason-text announcement">
-
-        Scientists confirm: aaj ke din,
-        saalon pehle, ek insaan paida hua
-        jisne baad mein poori tarah se ek ladke
-        ka dimaag hijack kar liya —
-        uska naam hai
-        <em>Rohini</em>. 😄
-
-        <br>
-        <br>
-
-        Side effects include:
-        bewajah muskurana,
-        phone baar baar check karna,
-        aur uski har cheez ko "cute" bolna.
-
-        Koi ilaaj nahi mila hai,
-        aur honestly, koi dhoondh bhi nahi raha. 💛
-
-      </p>
-
-      <p
-        class="sub"
-        style="margin-top:1.2rem;"
-      >
-        Jokes apart — aaj mere sabse khaas
-        insaan ka janamdin hai. 🎉
-      </p>
-
-      <button
-        class="cta"
-        onclick="goTo(4)"
-      >
-        Aage badho →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       SCENE 4
-       PHOTO GALLERY
-  ========================================================== -->
-
-  <section class="scene" id="scene-4">
-
-    <div class="stage">
-
-      <div class="eyebrow">
-        KUCH PYARI YAADEIN
-      </div>
-
-      <h2
-        class="headline"
-        style="font-size:clamp(1.8rem,7vw,2.6rem);"
-      >
-        Tumhari smile,
-        <br>
-        meri favourite cheez
-      </h2>
-
-      <div
-        class="gallery"
-        id="gallery"
-      ></div>
-
-      <button
-        class="cta"
-        onclick="goTo(5)"
-      >
-        Aage badho →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       SCENE 5
-       BIRTHDAY LETTER
-  ========================================================== -->
-
-  <section class="scene" id="scene-5">
-
-    <div class="stage">
-
-      <div class="modal-card">
-
-        <div class="reason-label">
-          HAPPY BIRTHDAY 🎉🪔
-        </div>
-
-        <p class="reason-text">
-
-          Aaj ka din khaas hai,
-          kyunki aaj tum paida hui thi —
-
-          <br>
-
-          aur duniya ko ek aisi wajah mili
-          jisse woh thodi si aur khoobsurat ho gayi.
-
-          <br>
-
-          Janamdin mubarak ho, Rohini.
-          Tumhari zindagi khushiyon se,
-          sehat se, aur un sab sapno se bhari rahe
-          jo tumne dil mein sanjoye hain. 🎂💫
-
-        </p>
-
-        <p
-          class="reason-text"
-          style="
-            font-size:.9rem;
-            opacity:.85;
-          "
-        >
-
-          <em>
-            Today is special, because today you were born —
-            and the world got a reason to be a little more beautiful.
-            Happy birthday, Rohini.
-            May your life stay full of joy, health,
-            and every dream you've kept close to your heart.
-          </em>
-
-        </p>
-
-        <div class="signoff">
-          — with all my heart, today and always
-        </div>
-
-
-        <div
-          class="reason-label"
-          style="margin-top:1.5rem;"
-        >
-          REASON № 7 · THE LAST ONE
-        </div>
-
-        <p class="reason-text">
-
-          I love you because of everything I already told you —
-          your eyes, your smile, your laugh, the way you care,
-          your voice, the way loving you made me kinder.
-
-          But if I had to choose one final reason,
-          it's this:
-
-          you never had to become anything for me to love you.
-
-          You just had to be you,
-          exactly as you are,
-          and that was always more than enough.
-
-          <em>
-            Tumhe waise hi chaha jaise tum ho —
-            na kam, na zyada, bas poora.
-          </em>
-
-          Whatever happens after today,
-          that will never change.
-
-        </p>
-
-        <div class="signoff">
-          — always, quietly, me
-        </div>
-
-      </div>
-
-      <button
-        class="cta"
-        onclick="goTo(6)"
-      >
-        Ek aakhri baat →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       SCENE 6
-       FINAL LOVE
-  ========================================================== -->
-
-  <section class="scene" id="scene-6">
-
-    <div class="stage">
-
-      <div class="eyebrow">
-        SABSE AAKHIR MEIN
-      </div>
-
-      <h2 class="headline">
-        Itna sara pyar,
-        <br>
-        ek dil mein nahi aata
-      </h2>
-
-      <p class="sub">
-        Tap the heart — jitni baar chaho.
-      </p>
-
-      <div
-        class="love-tap"
-        id="loveBtn"
-      >
-        💖
-      </div>
-
-      <div
-        class="love-count"
-        id="loveCount"
-      >
-        0 taps of love, and counting…
-      </div>
-
-      <p class="final-line">
-
-        Tumhari khushi,
-        tumhari sehat,
-        tumhara har chhota sa sapna —
-        bas yahi meri dua hai,
-        aaj bhi aur hamesha.
-
-        Happy Birthday, Rohini. 💫
-
-      </p>
-
-
-      <!-- =====================================================
-           REPLY BOX
-      ====================================================== -->
-
-      <div class="reply-box">
-
-        <p class="reply-label">
-
-          Ab tumhari baari.
-          Agar tum bhi mujhse utna hi pyar karti ho —
-          toh mujhe batao, kyun karti ho
-          aur kitna karti ho? 💌
-
-        </p>
-
-        <textarea
-          id="replyText"
-          placeholder="Likho na... kyun aur kitna pyar karti ho mujhse?"
-        ></textarea>
-
-        <button
-          class="reply-send"
-          id="replySend"
-          type="button"
-        >
-          Apna jawab bhejo 💌
-        </button>
-
-        <p
-          class="reply-sent"
-          id="replySent"
-        >
-          Sent — he'll see it on WhatsApp 💛
-        </p>
-
-      </div>
-
-
-      <!-- =====================================================
-           MUSIC
-      ====================================================== -->
-
-      <div class="music-row">
-
-        <button
-          class="music-btn"
-          id="musicBtn"
-          type="button"
-        >
-          ♪ Play a little music
-        </button>
-
-      </div>
-
-
-      <!-- =====================================================
-           WHATSAPP
-      ====================================================== -->
-
-      <div class="music-row">
-
-        <a
-          class="music-btn wa-btn"
-          href="https://wa.me/917767964727?text=I%20read%20your%20message%20%F0%9F%92%8C"
-          target="_blank"
-          rel="noopener"
-        >
-          💌 Let him know you read this
-        </a>
-
-      </div>
-
-
-      <!--
-        OPTIONAL MUSIC
-
-        If you upload a file named birthday.mp3
-        into the same GitHub folder, change this to:
-
-        <audio id="bgAudio" loop preload="auto">
-          <source src="birthday.mp3" type="audio/mpeg">
-        </audio>
-      -->
-
-      <audio id="bgAudio" loop preload="auto">
-  <source src="birthday.mp3" type="audio/mpeg">
-      </audio>
-
-    </div>
-
-  </section>
-
-
-  <footer>
-    made with 7 kinds of love, for Rohini ❤️
-  </footer>
-
-
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
-
-  <script>
-
-    /* =========================================================
-       GENERAL
-    ========================================================== */
-
-    const TOTAL = 6;
-
-    let current = 1;
-
-    const sky =
-      document.getElementById("sky");
-
-    const progress =
-      document.getElementById("progress");
-
-
-    /* =========================================================
-       PROGRESS BAR
-    ========================================================== */
-
-    for (let i = 1; i <= TOTAL; i++) {
-
-      const dot =
-        document.createElement("i");
-
-      dot.innerHTML =
-        `<b id="bar${i}"></b>`;
-
-      progress.appendChild(dot);
-    }
-
-
-    function updateProgress() {
-
-      for (let i = 1; i <= TOTAL; i++) {
-
-        document
-          .getElementById(`bar${i}`)
-          .style.width =
-          i <= current ? "100%" : "0%";
-      }
-    }
-
-
-    /* =========================================================
-       CHANGE SCENE
-    ========================================================== */
-
-    function goTo(n) {
-
-      document
-        .getElementById(`scene-${current}`)
-        .classList.remove("active");
-
-      current = n;
-
-      document
-        .getElementById(`scene-${current}`)
-        .classList.add("active");
-
-      updateProgress();
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+<div class="sky" id="sky"></div>
+<div class="progress" id="progress"></div>
+
+<section class="scene" id="scene-1">
+<div class="stage">
+<div class="eyebrow">FOR ROHINI</div>
+<h1 class="headline">A tree grown<br>from a heart</h1>
+<p class="sub">Har ek pyar ki shuru'aat ek beej se hoti hai — yeh raha mera.</p>
+<div id="treeWrap"></div>
+<button class="cta" onclick="goTo(2)">Aage badho →</button>
+</div>
+</section>
+
+<section class="scene" id="scene-2">
+<div class="stage">
+<div class="eyebrow">EK CHHOTA SA TOHFA</div>
+<h2 class="headline" style="font-size:clamp(1.7rem,7vw,2.6rem);">Roses & kisses,<br>just for you 🌹💋</h2>
+<p class="sub">Tap the rose and let it rain roses.</p>
+<div class="love-tap" id="roseBtn" style="width:150px;height:150px;font-size:2.6rem;">🌹</div>
+<button class="cta" onclick="goTo(3)">Aage badho →</button>
+</div>
+</section>
+
+<section class="scene" id="scene-3">
+<div class="stage">
+<div class="eyebrow">BREAKING NEWS 📰</div>
+<h2 class="headline" style="font-size:clamp(1.8rem,7vw,2.7rem);">Aaj duniya mein<br>ek khaas cheez hui hai</h2>
+<p class="reason-text announcement">
+Scientists confirm: aaj ke din, saalon pehle, ek insaan paida hua jisne baad mein poori tarah se ek ladke ka dimaag hijack kar liya — uska naam hai <em>Rohini</em>. 😄
+<br><br>
+Side effects include: bewajah muskurana, phone baar baar check karna, aur uski har cheez ko "cute" bolna. Koi ilaaj nahi mila hai, aur honestly, koi dhoondh bhi nahi raha. 💛
+</p>
+<p class="sub" style="margin-top:1.2rem;">Jokes apart — aaj mere sabse khaas insaan ka janamdin hai. 🎉</p>
+<button class="cta" onclick="goTo(4)">Aage badho →</button>
+</div>
+</section>
+
+<section class="scene" id="scene-4">
+<div class="stage">
+<div class="eyebrow">KUCH PYARI YAADEIN</div>
+<h2 class="headline" style="font-size:clamp(1.8rem,7vw,2.6rem);">Tumhari smile,<br>meri favourite cheez</h2>
+<div class="gallery" id="gallery"></div>
+<button class="cta" onclick="goTo(5)">Aage badho →</button>
+</div>
+</section>
+
+<section class="scene" id="scene-5">
+<div class="stage">
+<div class="modal-card">
+<div class="reason-label">HAPPY BIRTHDAY 🎉🪔</div>
+<p class="reason-text">
+Aaj ka din khaas hai, kyunki aaj tum paida hui thi —<br>
+aur duniya ko ek aisi wajah mili jisse woh thodi si aur khoobsurat ho gayi.<br>
+Janamdin mubarak ho, Rohini. Tumhari zindagi khushiyon se, sehat se, aur un sab sapno se bhari rahe jo tumne dil mein sanjoye hain. 🎂💫
+</p>
+<p class="reason-text" style="font-size:.9rem;opacity:.85;">
+<em>Today is special, because today you were born — and the world got a reason to be a little more beautiful. Happy birthday, Rohini. May your life stay full of joy, health, and every dream you've kept close to your heart.</em>
+</p>
+<div class="signoff">— with all my heart, today and always</div>
+<div class="reason-label" style="margin-top:1.5rem;">REASON № 7 · THE LAST ONE</div>
+<p class="reason-text">
+I love you because of everything I already told you — your eyes, your smile, your laugh, the way you care, your voice, the way loving you made me kinder. But if I had to choose one final reason, it's this: you never had to become anything for me to love you. You just had to be you, exactly as you are, and that was always more than enough. <em>Tumhe waise hi chaha jaise tum ho — na kam, na zyada, bas poora.</em> Whatever happens after today, that will never change.
+</p>
+<div class="signoff">— always, quietly, me</div>
+</div>
+<button class="cta" onclick="goTo(6)">Ek aakhri baat →</button>
+</div>
+</section>
+
+<section class="scene" id="scene-6">
+<div class="stage">
+<div class="eyebrow">SABSE AAKHIR MEIN</div>
+<h2 class="headline">Itna sara pyar,<br>ek dil mein nahi aata</h2>
+<p class="sub">Tap the heart — jitni baar chaho.</p>
+<div class="love-tap" id="loveBtn">💖</div>
+<div class="love-count" id="loveCount">0 taps of love, and counting…</div>
+<p class="final-line">Tumhari khushi, tumhari sehat, tumhara har chhota sa sapna — bas yahi meri dua hai, aaj bhi aur hamesha. Happy Birthday, Rohini. 💫</p>
+
+<div class="reply-box">
+<p class="reply-label">Ab tumhari baari. Agar tum bhi mujhse utna hi pyar karti ho — toh mujhe batao, kyun karti ho aur kitna karti ho? 💌</p>
+<textarea id="replyText" placeholder="Likho na... kyun aur kitna pyar karti ho mujhse?"></textarea>
+<button class="reply-send" id="replySend" type="button">Apna jawab bhejo 💌</button>
+<p class="reply-sent" id="replySent">Sent — he'll see it on WhatsApp 💛</p>
+</div>
+
+<div class="music-row">
+<button class="music-btn" id="musicBtn" type="button">♪ Play a little music</button>
+</div>
+
+<div class="music-row">
+<a class="music-btn wa-btn" href="https://wa.me/917767964727?text=I%20read%20your%20message%20%F0%9F%92%8C" target="_blank" rel="noopener">💌 Let him know you read this</a>
+</div>
+
+<!-- Optional music: upload birthday.mp3 beside index.html and uncomment the source below. -->
+<audio id="bgAudio" loop preload="none">
+<!-- <source src="birthday.mp3" type="audio/mpeg"> -->
+</audio>
+</div>
+</section>
+
+<footer>made with 7 kinds of love, for Rohini ❤️</footer>
+
+<script>
+const TOTAL=6;
+let current=1;
+const sky=document.getElementById("sky");
+const progress=document.getElementById("progress");
+
+for(let i=1;i<=TOTAL;i++){
+  const dot=document.createElement("i");
+  dot.innerHTML=`<b id="bar${i}"></b>`;
+  progress.appendChild(dot);
+}
+
+function updateProgress(){
+  for(let i=1;i<=TOTAL;i++){
+    document.getElementById(`bar${i}`).style.width=i<=current?"100%":"0%";
+  }
+}
+
+function goTo(n){
+  document.getElementById(`scene-${current}`).classList.remove("active");
+  current=n;
+  document.getElementById(`scene-${current}`).classList.add("active");
+  updateProgress();
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(n===1)startTree();
+  if(n===4)buildGallery();
+}
+
+for(let i=0;i<36;i++){
+  const t=document.createElement("div");
+  t.className="twinkle";
+  t.style.left=Math.random()*100+"vw";
+  t.style.top=Math.random()*100+"vh";
+  t.style.animationDuration=(1.5+Math.random()*2.5)+"s";
+  t.style.animationDelay=Math.random()*3+"s";
+  sky.appendChild(t);
+}
+
+let treeBuilt=false;
+
+function heartXY(t){
+  const x=16*Math.pow(Math.sin(t),3);
+  const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+  return{x,y};
+}
+
+function startTree(){
+  if(treeBuilt)return;
+  treeBuilt=true;
+
+  const wrap=document.getElementById("treeWrap");
+
+  const trunk=document.createElement("div");
+  trunk.className="trunk";
+  wrap.appendChild(trunk);
+
+  const stem=document.createElement("div");
+  stem.className="branch";
+  stem.style.left="50%";
+  stem.style.setProperty("--blen","14%");
+  stem.style.transform="rotate(0deg)";
+  stem.style.animationDelay="1.6s";
+  wrap.appendChild(stem);
+
+  let yMin=Infinity,yMax=-Infinity,xMin=Infinity,xMax=-Infinity;
+
+  for(let a=0;a<Math.PI*2;a+=0.05){
+    const p=heartXY(a);
+    if(p.y<yMin)yMin=p.y;
+    if(p.y>yMax)yMax=p.y;
+    if(p.x<xMin)xMin=p.x;
+    if(p.x>xMax)xMax=p.x;
+  }
+
+  const hearts=["💗","💕","💖","❤️","💞","💘"];
+  const points=[];
+  const layers=[0.28,0.45,0.60,0.75,0.88,1.0];
+
+  layers.forEach((scale,li)=>{
+    const count=6+li*3;
+    for(let i=0;i<count;i++){
+      const t=(i/count)*Math.PI*2+Math.random()*0.18;
+      const p=heartXY(t);
+      points.push({
+        x:p.x*scale,
+        y:p.y*scale,
+        delay:1.9+li*0.12+Math.random()*0.5
       });
+    }
+  });
 
-      if (n === 1) {
-        startTree();
-      }
+  points.forEach(pt=>{
+    const h=document.createElement("div");
+    h.className="heart-leaf";
+    h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
 
-      if (n === 4) {
-        buildGallery();
-      }
+    const nx=(pt.x-xMin)/(xMax-xMin);
+    const ny=(yMax-pt.y)/(yMax-yMin);
+
+    h.style.left=`calc(${12+nx*76}% - 9px)`;
+    h.style.top=(4+ny*54)+"%";
+    h.style.fontSize=(0.85+Math.random()*0.55)+"rem";
+    h.style.animationDelay=pt.delay+"s";
+
+    wrap.appendChild(h);
+  });
+
+  for(let i=0;i<8;i++){
+    const f=document.createElement("div");
+    f.className="fallheart";
+    f.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+    f.style.left=(Math.random()*80+10)+"%";
+    f.style.animationDuration=(5+Math.random()*4)+"s";
+    f.style.animationDelay=(3.4+Math.random()*4)+"s";
+    wrap.appendChild(f);
+  }
+}
+
+document.getElementById("roseBtn").addEventListener("click",()=>{
+  const emojis=["🌹","💋","🌹","💗","🌹","💋"];
+
+  for(let i=0;i<26;i++){
+    const e=document.createElement("div");
+    e.className="burst-emoji";
+    e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+
+    const angle=Math.random()*Math.PI*2;
+    const dist=80+Math.random()*160;
+
+    e.style.setProperty("--dx",Math.cos(angle)*dist+"px");
+    e.style.setProperty("--dy",Math.sin(angle)*dist+"px");
+    e.style.setProperty("--rot",(Math.random()*360-180)+"deg");
+    e.style.animationDelay=Math.random()*0.25+"s";
+
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),1800);
+  }
+});
+
+const photos=[
+  {
+    src:"IMG-20240507-WA0002.jpg",
+    caption:"Tumhari woh muskaan, jo mera pura din bana deti hai."
+  },
+  {
+    src:"IMG-20260327-WA0012.jpg",
+    caption:"Har simple pal tumhare saath khaas ban jaata hai."
+  },
+  {
+    src:"IMG-20260425-WA0000.jpg",
+    caption:"Yeh look, yeh laugh — bas yehi toh main sabse zyada miss karta hoon jab tum door ho."
+  },
+  {
+    src:"IMG-20260618-WA0011.jpg",
+    caption:"Tumhari energy, tumhari care — yehi toh main hoon jab tumhare saath hota hoon."
+  }
+];
+
+let galleryBuilt=false;
+
+function buildGallery(){
+  if(galleryBuilt)return;
+  galleryBuilt=true;
+
+  const gallery=document.getElementById("gallery");
+
+  photos.forEach((photo,index)=>{
+    const card=document.createElement("div");
+    card.className="photo-card";
+
+    card.innerHTML=`
+      <div class="photo-frame">
+        <img src="${photo.src}" alt="Rohini memory ${index+1}" loading="lazy">
+      </div>
+      <p class="photo-caption">"${photo.caption}"</p>
+      <p class="photo-note">memory ${index+1} ❤️</p>
+    `;
+
+    gallery.appendChild(card);
+  });
+}
+
+let loveTaps=0;
+const loveBtn=document.getElementById("loveBtn");
+const loveCount=document.getElementById("loveCount");
+
+const stickerEmojis=["💖","✨","💗","🎉","💫","😘","🌹"];
+
+loveBtn.addEventListener("click",()=>{
+  loveTaps++;
+
+  loveCount.textContent=
+    loveTaps===1
+      ?"1 tap of love, and counting…"
+      :`${loveTaps} taps of love, and counting…`;
+
+  for(let i=0;i<5;i++){
+    const s=document.createElement("div");
+    s.className="sticker";
+    s.textContent=stickerEmojis[Math.floor(Math.random()*stickerEmojis.length)];
+
+    const rect=loveBtn.getBoundingClientRect();
+
+    s.style.left=(rect.left+rect.width/2)+"px";
+    s.style.top=(rect.top+rect.height/2)+"px";
+
+    const angle=Math.random()*Math.PI*2;
+    const dist=40+Math.random()*90;
+
+    s.style.setProperty("--dx",Math.cos(angle)*dist+"px");
+    s.style.setProperty("--dy",Math.sin(angle)*dist+"px");
+    s.style.setProperty("--rot",(Math.random()*80-40)+"deg");
+    s.style.animationDelay=Math.random()*0.15+"s";
+
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1700);
+  }
+});
+
+const replyText=document.getElementById("replyText");
+const replySend=document.getElementById("replySend");
+const replySent=document.getElementById("replySent");
+
+replySend.addEventListener("click",()=>{
+  const msg=replyText.value.trim();
+
+  if(!msg){
+    replyText.focus();
+    replyText.placeholder="Kuch toh likho na 🥺 — kyun aur kitna pyar karti ho?";
+    return;
+  }
+
+  const url=
+    "https://wa.me/917767964727?text="
+    +encodeURIComponent(msg);
+
+  window.open(url,"_blank","noopener");
+
+  replySent.classList.add("show");
+
+  setTimeout(
+    ()=>replySent.classList.remove("show"),
+    4000
+  );
+});
+
+const musicBtn=document.getElementById("musicBtn");
+const audio=document.getElementById("bgAudio");
+
+musicBtn.addEventListener("click",()=>{
+  if(audio.paused){
+    if(!audio.src){
+      musicBtn.textContent="Add birthday.mp3 first";
+      return;
     }
 
-
-    /* =========================================================
-       TWINKLING STARS
-    ========================================================== */
-
-    for (let i = 0; i < 36; i++) {
-
-      const t =
-        document.createElement("div");
-
-      t.className = "twinkle";
-
-      t.style.left =
-        Math.random() * 100 + "vw";
-
-      t.style.top =
-        Math.random() * 100 + "vh";
-
-      t.style.animationDuration =
-        (1.5 + Math.random() * 2.5) + "s";
-
-      t.style.animationDelay =
-        Math.random() * 3 + "s";
-
-      sky.appendChild(t);
-    }
-
-
-    /* =========================================================
-       SCENE 1
-       HEART TREE
-    ========================================================== */
-
-    let treeBuilt = false;
-
-
-    function heartXY(t) {
-
-      const x =
-        16 * Math.pow(Math.sin(t), 3);
-
-      const y =
-        13 * Math.cos(t)
-        - 5 * Math.cos(2 * t)
-        - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t);
-
-      return {
-        x,
-        y
-      };
-    }
-
-
-    function startTree() {
-
-      if (treeBuilt) {
-        return;
-      }
-
-      treeBuilt = true;
-
-      const wrap =
-        document.getElementById("treeWrap");
-
-
-      /* TRUNK */
-
-      const trunk =
-        document.createElement("div");
-
-      trunk.className = "trunk";
-
-      wrap.appendChild(trunk);
-
-
-      /* STEM */
-
-      const stem =
-        document.createElement("div");
-
-      stem.className = "branch";
-
-      stem.style.left = "50%";
-
-      stem.style.setProperty(
-        "--blen",
-        "14%"
-      );
-
-      stem.style.transform =
-        "rotate(0deg)";
-
-      stem.style.animationDelay =
-        "1.6s";
-
-      wrap.appendChild(stem);
-
-
-      /* FIND HEART BOUNDS */
-
-      let yMin = Infinity;
-      let yMax = -Infinity;
-
-      let xMin = Infinity;
-      let xMax = -Infinity;
-
-
-      for (
-        let a = 0;
-        a < Math.PI * 2;
-        a += 0.05
-      ) {
-
-        const p =
-          heartXY(a);
-
-        if (p.y < yMin) {
-          yMin = p.y;
-        }
-
-        if (p.y > yMax) {
-          yMax = p.y;
-        }
-
-        if (p.x < xMin) {
-          xMin = p.x;
-        }
-
-        if (p.x > xMax) {
-          xMax = p.x;
-        }
-      }
-
-
-      const hearts = [
-        "💗",
-        "💕",
-        "💖",
-        "❤️",
-        "💞",
-        "💘"
-      ];
-
-
-      const points = [];
-
-
-      const layers = [
-        0.28,
-        0.45,
-        0.60,
-        0.75,
-        0.88,
-        1.0
-      ];
-
-
-      layers.forEach(
-        (scale, li) => {
-
-          const count =
-            6 + li * 3;
-
-          for (
-            let i = 0;
-            i < count;
-            i++
-          ) {
-
-            const t =
-              (i / count)
-              * Math.PI
-              * 2
-              +
-              Math.random() * 0.18;
-
-            const p =
-              heartXY(t);
-
-            points.push({
-              x: p.x * scale,
-              y: p.y * scale,
-
-              delay:
-                1.9
-                +
-                li * 0.12
-                +
-                Math.random() * 0.5
-            });
-          }
-        }
-      );
-
-
-      /* CREATE HEART LEAVES */
-
-      points.forEach(pt => {
-
-        const h =
-          document.createElement("div");
-
-        h.className =
-          "heart-leaf";
-
-        h.textContent =
-          hearts[
-            Math.floor(
-              Math.random()
-              * hearts.length
-            )
-          ];
-
-
-        const nx =
-          (pt.x - xMin)
-          /
-          (xMax - xMin);
-
-
-        const ny =
-          (yMax - pt.y)
-          /
-          (yMax - yMin);
-
-
-        const leftPct =
-          12 + nx * 76;
-
-        const topPct =
-          4 + ny * 54;
-
-
-        h.style.left =
-          `calc(${leftPct}% - 9px)`;
-
-        h.style.top =
-          topPct + "%";
-
-
-        h.style.fontSize =
-          (
-            0.85
-            +
-            Math.random() * 0.55
-          )
-          + "rem";
-
-
-        h.style.animationDelay =
-          pt.delay + "s";
-
-
-        wrap.appendChild(h);
+    audio.play()
+      .then(()=>{
+        musicBtn.textContent="♪ Pause music";
+      })
+      .catch(()=>{
+        musicBtn.textContent="Tap again to play";
       });
-
-
-      /* FALLING HEARTS */
-
-      for (let i = 0; i < 8; i++) {
-
-        const f =
-          document.createElement("div");
-
-        f.className =
-          "fallheart";
-
-        f.textContent =
-          hearts[
-            Math.floor(
-              Math.random()
-              * hearts.length
-            )
-          ];
-
-
-        f.style.left =
-          (
-            Math.random() * 80
-            + 10
-          )
-          + "%";
-
-
-        f.style.animationDuration =
-          (
-            5
-            +
-            Math.random() * 4
-          )
-          + "s";
-
-
-        f.style.animationDelay =
-          (
-            3.4
-            +
-            Math.random() * 4
-          )
-          + "s";
-
-
-        wrap.appendChild(f);
-      }
-
-    }
-
-
-    /* =========================================================
-       SCENE 2
-       ROSE + KISS BURST
-    ========================================================== */
-
-    document
-      .getElementById("roseBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          const emojis = [
-            "🌹",
-            "💋",
-            "🌹",
-            "💗",
-            "🌹",
-            "💋"
-          ];
-
-
-          for (let i = 0; i < 26; i++) {
-
-            const e =
-              document.createElement("div");
-
-            e.className =
-              "burst-emoji";
-
-            e.textContent =
-              emojis[
-                Math.floor(
-                  Math.random()
-                  * emojis.length
-                )
-              ];
-
-
-            const angle =
-              Math.random()
-              * Math.PI
-              * 2;
-
-
-            const dist =
-              80
-              +
-              Math.random() * 160;
-
-
-            e.style.setProperty(
-              "--dx",
-              Math.cos(angle)
-              * dist
-              + "px"
-            );
-
-
-            e.style.setProperty(
-              "--dy",
-              Math.sin(angle)
-              * dist
-              + "px"
-            );
-
-
-            e.style.setProperty(
-              "--rot",
-              (
-                Math.random() * 360
-                - 180
-              )
-              + "deg"
-            );
-
-
-            e.style.animationDelay =
-              Math.random() * 0.25
-              + "s";
-
-
-            document.body.appendChild(e);
-
-
-            setTimeout(
-              () => e.remove(),
-              1800
-            );
-          }
-
-        }
-      );
-
-
-    /* =========================================================
-       SCENE 4
-       PHOTO GALLERY
-    ========================================================== */
-
-    const photos = [
-
-      {
-        src:
-          "IMG-20240507-WA0002.jpg",
-
-        caption:
-          "Tumhari woh muskaan, jo mera pura din bana deti hai."
-      },
-
-      {
-        src:
-          "IMG-20260327-WA0012.jpg",
-
-        caption:
-          "Har simple pal tumhare saath khaas ban jaata hai."
-      },
-
-      {
-        src:
-          "IMG-20260425-WA0000.jpg",
-
-        caption:
-          "Yeh look, yeh laugh — bas yehi toh main sabse zyada miss karta hoon jab tum door ho."
-      },
-
-      {
-        src:
-          "IMG-20260618-WA0011.jpg",
-
-        caption:
-          "Tumhari energy, tumhari care — yehi toh main hoon jab tumhare saath hota hoon."
-      }
-
-    ];
-
-
-    let galleryBuilt = false;
-
-
-    function buildGallery() {
-
-      if (galleryBuilt) {
-        return;
-      }
-
-      galleryBuilt = true;
-
-
-      const gallery =
-        document.getElementById(
-          "gallery"
-        );
-
-
-      photos.forEach(
-        (photo, index) => {
-
-          const card =
-            document.createElement("div");
-
-          card.className =
-            "photo-card";
-
-
-          card.innerHTML = `
-
-            <div class="photo-frame">
-
-              <img
-                src="${photo.src}"
-                alt="Rohini memory ${index + 1}"
-                loading="lazy"
-              >
-
-            </div>
-
-            <p class="photo-caption">
-              "${photo.caption}"
-            </p>
-
-            <p class="photo-note">
-              memory ${index + 1} ❤️
-            </p>
-
-          `;
-
-
-          gallery.appendChild(card);
-
-        }
-      );
-
-    }
-
-
-    /* =========================================================
-       SCENE 6
-       LOVE TAPS
-    ========================================================== */
-
-    let loveTaps = 0;
-
-
-    const loveBtn =
-      document.getElementById(
-        "loveBtn"
-      );
-
-
-    const loveCount =
-      document.getElementById(
-        "loveCount"
-      );
-
-
-    const stickerEmojis = [
-      "💖",
-      "✨",
-      "💗",
-      "🎉",
-      "💫",
-      "😘",
-      "🌹"
-    ];
-
-
-    loveBtn.addEventListener(
-      "click",
-      () => {
-
-        loveTaps++;
-
-
-        loveCount.textContent =
-          loveTaps === 1
-            ? "1 tap of love, and counting…"
-            : `${loveTaps} taps of love, and counting…`;
-
-
-        for (let i = 0; i < 5; i++) {
-
-          const s =
-            document.createElement("div");
-
-          s.className =
-            "sticker";
-
-
-          s.textContent =
-            stickerEmojis[
-              Math.floor(
-                Math.random()
-                * stickerEmojis.length
-              )
-            ];
-
-
-          const rect =
-            loveBtn.getBoundingClientRect();
-
-
-          s.style.left =
-            (
-              rect.left
-              +
-              rect.width / 2
-            )
-            + "px";
-
-
-          s.style.top =
-            (
-              rect.top
-              +
-              rect.height / 2
-            )
-            + "px";
-
-
-          const angle =
-            Math.random()
-            * Math.PI
-            * 2;
-
-
-          const dist =
-            40
-            +
-            Math.random() * 90;
-
-
-          s.style.setProperty(
-            "--dx",
-            Math.cos(angle)
-            * dist
-            + "px"
-          );
-
-
-          s.style.setProperty(
-            "--dy",
-            Math.sin(angle)
-            * dist
-            + "px"
-          );
-
-
-          s.style.setProperty(
-            "--rot",
-            (
-              Math.random() * 80
-              - 40
-            )
-            + "deg"
-          );
-
-
-          s.style.animationDelay =
-            Math.random() * 0.15
-            + "s";
-
-
-          document.body.appendChild(s);
-
-
-          setTimeout(
-            () => s.remove(),
-            1700
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       REPLY → WHATSAPP
-    ========================================================== */
-
-    const replyText =
-      document.getElementById(
-        "replyText"
-      );
-
-
-    const replySend =
-      document.getElementById(
-        "replySend"
-      );
-
-
-    const replySent =
-      document.getElementById(
-        "replySent"
-      );
-
-
-    replySend.addEventListener(
-      "click",
-      () => {
-
-        const msg =
-          replyText.value.trim();
-
-
-        if (!msg) {
-
-          replyText.focus();
-
-          replyText.placeholder =
-            "Kuch toh likho na 🥺 — kyun aur kitna pyar karti ho?";
-
-          return;
-        }
-
-
-        const phone =
-          "917767964727";
-
-
-        const url =
-          "https://wa.me/"
-          +
-          phone
-          +
-          "?text="
-          +
-          encodeURIComponent(msg);
-
-
-        window.open(
-          url,
-          "_blank",
-          "noopener"
-        );
-
-
-        replySent.classList.add(
-          "show"
-        );
-
-
-        setTimeout(
-          () => {
-            replySent.classList.remove(
-              "show"
-            );
-          },
-          4000
-        );
-
-      }
-    );
-
-
-    /* =========================================================
-       MUSIC
-    ========================================================== */
-
-    const musicBtn =
-      document.getElementById(
-        "musicBtn"
-      );
-
-
-    const audio =
-      document.getElementById(
-        "bgAudio"
-      );
-
-
-    musicBtn.addEventListener(
-      "click",
-      () => {
-
-        if (audio.paused) {
-
-          if (!audio.src) {
-
-            musicBtn.textContent =
-              "Add birthday.mp3 first";
-
-            return;
-          }
-
-
-          audio
-            .play()
-            .then(() => {
-
-              musicBtn.textContent =
-                "♪ Pause music";
-
-            })
-            .catch(() => {
-
-     
+  }else{
+    audio.pause();
+    musicBtn.textContent="♪ Play a little music";
+  }
+});
+
+document.getElementById("scene-1").classList.add("active");
+updateProgress();
+startTree();
+</script>
+
+</body>
+</html>
